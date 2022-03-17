@@ -9,6 +9,7 @@ urlpatterns = [
     path('', views.index),
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls')),
+    path('common/', include('common.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
