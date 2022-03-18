@@ -1,0 +1,4 @@
+/blog/category/프로그램
+
+
+<int:pk>

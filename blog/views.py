@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 
@@ -32,6 +33,7 @@ def category_page(request, slug):
     }
     return render(request, 'blog/post_list.html', context)
 
+@login_required(login_url='common:login')
 def post_create(request):
     #포스트 쓰기
     if request.method == "POST":
@@ -39,7 +41,7 @@ def post_create(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.pub_date = timezone.now()
-            post.author = request.user
+            post.author = request.user     #작성자
             post.save()  #db에 저장
             return redirect('blog:index')
     else:
