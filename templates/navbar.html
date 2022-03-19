@@ -1,12 +1,19 @@
 <header>
     <nav>
-        <ul>
-            <li><a href="{% url 'blog:index' %}">Home</a></li>
-            <li><a href="{% url 'blog:post_create' %}">글쓰기</a></li>
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'blog:index' %}">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'blog:post_create' %}">글쓰기</a>
+          </li>
             {% if user.is_authenticated %}
-                <li><a href="{% url 'common:logout' %}">({{ user.username }}님)로그아웃</a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'common:logout' %}">({{ user.username }}님)로그아웃</a>
+            </li>
             {% else %}
-                <li><a href="{% url 'common:login' %}">로그인</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'common:login' %}"><i class="fas fa-sign-in-alt"></i> 로그인</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'common:signup' %}"><i class="fas fa-sign-in-alt"></i>회원가입</a></li>
             {% endif %}
         </ul>
     </nav>

@@ -4,6 +4,7 @@ from django.utils import timezone
 
 from blog.forms import PostForm
 from blog.models import Post, Category
+from common.forms import UserForm
 
 
 def index(request):
@@ -48,3 +49,5 @@ def post_create(request):
         form = PostForm()
     context = {'form':form}
     return render(request, 'blog/post_form.html', context)
+
+

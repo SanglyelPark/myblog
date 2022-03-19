@@ -23,6 +23,7 @@ class Post(models.Model):
     modify_date = models.DateTimeField(null=True, blank=True)
     photo = models.ImageField(upload_to='blog/images/%Y/%m/%d/',
                               null=True, blank=True)
+    file = models.FileField(upload_to='blog/files/%Y/%m/%d/', null=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
     # 카테고리가 삭제되어도 블로그는 유지됨(미분류가 있을수 있다)
