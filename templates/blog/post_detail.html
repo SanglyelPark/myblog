@@ -2,15 +2,26 @@
 {% block title %}Blog - {% endblock %}
 {% block content %}
         <section id="detail">
-            <h3>{{ post.title }}</h3>
-            <h5>작성자:{{ post.author }} (작성일:{{ post.pub_date }})</h5>
-            {% if post.photo %}
-                <img src="{{ post.photo.url }}" width="500px" height="500px">
-            {% endif %}
-            <p>{{ post.content | linebreaks }}</p>
-            {% if post.file %}
-            <p><a href="{{ post.file.url }}"> Download(첨부화일) : <i class="fa-solid fa-file-arrow-down"></i> &nbsp{{ post.file }}</a></p>
-            {% endif %}
+            <div class="alert alert-light my-3" role="alert">
+                <h3><i class="fa-solid fa-volume-high"></i> &nbsp;{{ post.title }}</h3>
+            </div>
+                <div class="card" style="width: 600px;">
+                    {% if post.photo %}
+                        <img src="{{ post.photo.url }}" width="500px" height="500px" class="card-img-top" alt="...">
+                    {% endif %}
+                      <div class="card-body">
+<!--                        <p class="card-text">제목 : {{ post.title }}</a></p>-->
+                        <p class="card-text"><span class="badge bg-secondary">작성자:{{ post.author }} &nbsp;&nbsp;(작성일:{{ post.pub_date }})</span></p>
+                            <div class="alert alert-info" role="alert">
+                                <p class="card-text">{{ post.content | linebreaks }}</p>
+                            </div>
+
+
+                        {% if post.file %}
+                        <p><a href="{{ post.file.url }}"> Download(첨부화일) : <i class="fa-solid fa-file-arrow-down"></i> &nbsp{{ post.file }}</a></p>
+                        {% endif %}
+                      </div>
+                </div>
             <hr>
         </section>
         <aside>
