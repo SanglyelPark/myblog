@@ -13,4 +13,8 @@ urlpatterns = [
     # 포스트 쓰기
     path('post/create/', views.post_create, name='post_create'),
 
+    path('post/delete/<int:pk>/', views.post_delete, name='post_delete'),
+
+    path('post/modify/<int:pk>/', views.post_modify, name='post_modify'),
+
 ]

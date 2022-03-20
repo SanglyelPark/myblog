@@ -2,12 +2,18 @@
 {% block title %}Blog - 전체보기 {% endblock %}
 {% block content %}
        <section>
-            <h1>글쓰기</h1>
-            <form action="" method="post" enctype="multipart/form-data">
+           <div class="alert alert-light my-3" role="alert">
+                <h1><i class="fa-solid fa-pen-to-square"></i> 글 쓰 기 </h1>
+           </div>
+<!--           <div class="input-group">-->
+<!--              <span class="input-group-text">제 목</span>-->
+<!--              <textarea class="form-control" aria-label="With textarea"></textarea>-->
+<!--            </div>-->
+            <form class="alert alert-light my-3" action="" method="post" enctype="multipart/form-data">
                 <!-- 일반 필드와 파일(이미지)필드 멀티로 구성됨-->
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit">저장하기</button>
+                <button class="btn btn-primary" type="submit">저장하기</button>
             </form>
         </section>
 {% endblock %}

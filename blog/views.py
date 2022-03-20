@@ -50,4 +50,26 @@ def post_create(request):
     context = {'form':form}
     return render(request, 'blog/post_form.html', context)
 
+@login_required(login_url='common:login')
+def post_delete(request, post_id):
+    post = Post.objects.get(id=post_id)
+    post.delete()
+    return redirect('blog:index')
+
+@login_required(login_url='common:login')
+def post_modify(request, post_id):
+    post = Post.objects.get(id=post_id)
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.modify_date = timezone.now()
+            post.author = request.user
+            post.save()
+            return redirect('blog:detail', post_id=post_id)
+    else:
+        form = PostForm(instance=post)
+    context = {'form':form}
+    return render(request, 'blog/post_form.html', context)
+
 
